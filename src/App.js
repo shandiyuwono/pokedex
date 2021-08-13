@@ -41,14 +41,30 @@ function App() {
           <div className="pokemon-container">
             {
               data.map((val) => {
-                
                 return (
-                  <div class="card">
-                    <div class="card-header">
-                      { val.name }
-                    </div>
+                <div class={ `card ${val.types[0].type.name}`}>
+                    <img src={val.sprites.front_default} alt="pokemon front" />
                     <div className="card-body">
-                      <img src={val.sprites.front_default} alt="pokemon front" />
+                      <title>
+                        <h2>
+                          { val.name[0].toUpperCase() + val.name.slice(1) }
+                        </h2>
+                        <p>
+                          #{ val.id }
+                        </p>
+                      </title>
+                      
+                      <caption>
+                        {
+                          val.types.map((type) => {
+                            return (
+                              <p className={ type.type.name }>
+                                { type.type.name[0].toUpperCase() + type.type.name.slice(1) }
+                              </p>
+                            )
+                          })
+                        }
+                      </caption>
                     </div>
                   </div>
                 )
