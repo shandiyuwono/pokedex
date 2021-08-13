@@ -15,8 +15,6 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <h1>Pokemon Codex</h1>
-
         <Switch>
           <Route exact path="/">
             <PokemonList />

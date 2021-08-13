@@ -43,6 +43,8 @@ function PokemonList(props) {
 
   return (
     <div>
+      <h1>Pokemon Codex</h1>
+
       { loading ? 
         <h3>Loading ...</h3> :
         <div className="pokemon-container">
@@ -67,13 +69,11 @@ function PokemonList(props) {
                   
                   <div>
                     {
-                      val.types.map((type, index) => {
-                        return (
-                          <p key={ index } className={ `${type.type.name}` }>
-                            { type.type.name[0].toUpperCase() + type.type.name.slice(1) }
-                          </p>
-                        )
-                      })
+                      val.types.map((type, index) => (
+                        <p key={ index } className={ `${type.type.name}` }>
+                          { type.type.name[0].toUpperCase() + type.type.name.slice(1) }
+                        </p>
+                      ))
                     }
                   </div>
                 </div>
