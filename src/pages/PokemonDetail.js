@@ -49,7 +49,7 @@ function PokemonDetail(props) {
       {
         loading ?
           <div>Loading ...</div> : 
-          <div class="text-center">
+          <div className="text-center">
             <h1>
               { detail.name[0].toUpperCase() + detail.name.slice(1) }
             </h1>
@@ -70,7 +70,7 @@ function PokemonDetail(props) {
               }
             </div>
 
-            <button class="btn btn-primary mt-5 px-5"
+            <button className="btn btn-primary mt-5 px-5"
               onClick={() => catchPokemon()}
             >
               CATCH

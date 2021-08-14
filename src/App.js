@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios'
 import './App.scss';
 import PokemonDetail from './pages/PokemonDetail';
 import PokemonList from './pages/PokemonList'
+import MyPokemonList from './pages/MyPokemonList'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom"
 
 
@@ -21,6 +19,9 @@ function App() {
           </Route>
           <Route path="/detail/:name">
             <PokemonDetail />
+          </Route>
+          <Route path="/my-pokemon-list">
+            <MyPokemonList />
           </Route>
         </Switch>
       </div>

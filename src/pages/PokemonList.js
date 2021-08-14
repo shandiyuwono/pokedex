@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import PokemonCard from './components/PokemonCard';
 import '../App.scss';
 
 function PokemonList(props) {
@@ -51,33 +52,7 @@ function PokemonList(props) {
           {
             data.map((val, index) => {
               return (
-              <div
-                className={ `poke-card ${val.types[0].type.name} mb-2`}
-                key={ index }
-                onClick={() => goToDetail(val.name)}
-              >
-                <img src={val.sprites.front_default} alt="pokemon front" />
-                <div className="w-60">
-                  <div>
-                    <h2>
-                      { val.name[0].toUpperCase() + val.name.slice(1) }
-                    </h2>
-                    <p>
-                      #{ val.id }
-                    </p>
-                  </div>
-                  
-                  <div>
-                    {
-                      val.types.map((type, index) => (
-                        <p key={ index } className={ `${type.type.name}` }>
-                          { type.type.name[0].toUpperCase() + type.type.name.slice(1) }
-                        </p>
-                      ))
-                    }
-                  </div>
-                </div>
-              </div>
+                <PokemonCard data={val} key={index}/>
               )
             })
           }
