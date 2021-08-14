@@ -48,7 +48,6 @@ body {
       width: 80px;
       color: white;
       padding: 2px 0;
-      margin-right: 10px;
       border-radius: 5px;
     }
 
@@ -141,9 +140,11 @@ body {
   }
 }
 
+
 .move-container {
   height: 50vh;
   overflow: auto;
+  // overflow-x: hidden;
 
   & > div {
     margin-bottom: 10px;
@@ -159,24 +160,8 @@ body {
 }
 
 /** modal **/
-.modal-background {
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.2);
-  border: 2px solid blue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .modal-container {
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-    background: #fff;
-    color: #000;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    z-index: 10;
-    border-radius: 10px;
-  }
+.pokeball-loading {
+  max-width: 100px;
 }
 
 

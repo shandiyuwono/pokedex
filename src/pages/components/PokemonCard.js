@@ -39,7 +39,7 @@ function PokemonCard(props) {
           <div className="tags">
             {
               data.types.map((type, index) => (
-                <p key={ index } className={ `${type.type.name}` }>
+                <p key={ index } className={ `${type.type.name} me-3` }>
                   { type.type.name[0].toUpperCase() + type.type.name.slice(1) }
                 </p>
               ))

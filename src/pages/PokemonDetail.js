@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import PokemonModal from './components/PokemonModal'
+import { Modal } from 'react-bootstrap'
 
 function PokemonDetail(props) {
   const [ detail, setDetail ] = useState({})
@@ -61,7 +62,7 @@ function PokemonDetail(props) {
             <div className="move-container row">
               {
                 detail.moves.map((val, index) => (
-                  <div className="col-6" key={index}>
+                  <div className="col-4" key={index}>
                     <p>
                       { val.move.name }
                     </p>
@@ -76,17 +77,14 @@ function PokemonDetail(props) {
               CATCH
             </button>
 
-            {
-              openModal &&
-              <PokemonModal
-                openModal={openModal}
-                catchLoading={catchLoading}
-                detail={detail}
-                catchSuccess={catchSuccess}
-                catchPokemon={catchPokemon}
-                setOpenModal={setOpenModal}
-              /> 
-            }
+            <PokemonModal
+              openModal={openModal}
+              catchLoading={catchLoading}
+              detail={detail}
+              catchSuccess={catchSuccess}
+              catchPokemon={catchPokemon}
+              setOpenModal={setOpenModal}
+            /> 
         </div>
       }
     </div>

@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { Modal } from 'react-bootstrap'
+import PokeballLoading from '../../assets/pokeball_loading.webp'
 
 function PokemonModal(props) {
   const {
     detail,
+    openModal,
     catchSuccess,
     catchLoading,
     catchPokemon,
@@ -35,27 +38,33 @@ function PokemonModal(props) {
   }
 
   return (
-    <div className="modal-background">
-      <div className="modal-container">
-
-        {
-          catchLoading ? 
-          <div>Loading...</div> :
-          <div>
-            <h2 className="title">
+    <Modal show={openModal} centered>
+      {
+        catchLoading ? 
+        <img className="pokeball-loading" src={PokeballLoading} alt="pokeball loading"/> :
+        <div>
+          <Modal.Body className="text-center">
+            
+            <h2 className="mb-4">
               {
                 catchSuccess ? 'You\'ve successfully caught the Pokemon!' : 'Woops! The Pokemon Escaped!'
               }
             </h2>
-            <div className="body">
+
+            <div>
+              
               {
                 catchSuccess &&
-                <input
-                  type="text"
-                  placeholder="Enter Nickname"
-                  value={nickname}
-                  onChange={(e) => setNickname(e.target.value)}
-                />
+                <div>
+                  <p>What will you name it?</p>
+                  <input
+                    type="text"
+                    className="p-2 w-100"
+                    placeholder="Enter Nickname"
+                    value={nickname}
+                    onChange={(e) => setNickname(e.target.value)}
+                  />
+                </div>
               }
 
               { 
@@ -64,28 +73,25 @@ function PokemonModal(props) {
                   Pokemon nickname has already been taken, please enter a new one.
                 </p>
               }
-
-              
-
-              <div className="d-flex">
-                <button onClick={() => setOpenModal(false)}>
-                  Take me back
-                </button>
-                {
-                  catchSuccess ?
-                  <button onClick={() => addPokemon() }>
-                    Save Pokemon
-                  </button> :
-                  <button onClick={() => catchPokemon()}>
-                    Try again
-                  </button>
-                }
-              </div>
             </div>
-          </div>
-        }
-      </div>
-    </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="btn btn-secondary" onClick={() => setOpenModal(false)}>
+              Take me back
+            </button>
+            { 
+              catchSuccess ?
+              <button className="btn btn-success" disabled={!nickname} onClick={() => addPokemon() }>
+                Save Pokemon
+              </button> :
+              <button className="btn btn-warning" onClick={() => catchPokemon()}>
+                Try again
+              </button>
+            }
+          </Modal.Footer>
+        </div>
+      }
+    </Modal>
   )
 }
 
