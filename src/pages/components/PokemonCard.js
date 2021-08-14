@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 function PokemonCard(props) {
   const {
     data,
-    history
+    history,
+    removePokemon
   } = props
 
   const goToDetail = (name) => {
@@ -48,7 +49,7 @@ function PokemonCard(props) {
 
         {
           data.nickname &&
-          <button>
+          <button onClick={() => removePokemon(data.nickname)}>
             Remove
           </button>
         }
