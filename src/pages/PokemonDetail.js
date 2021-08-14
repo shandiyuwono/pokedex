@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import PokemonModal from './components/PokemonModal'
 
 function PokemonDetail(props) {
   const [ detail, setDetail ] = useState({})
   const [ loading, setLoading ] = useState(true)
+  const [ catchLoading, setCatchLoading ] = useState(true)
+  const [ catchSuccess, setCatchSuccess ] = useState(false)
+  const [ openModal, setOpenModal ] = useState(false)
 
   const {
     name
@@ -23,9 +27,15 @@ function PokemonDetail(props) {
   }, [])
 
   const catchPokemon = () => {
-    const timer = () => setTimeout(() => {
-      console.log('RANDOM', Math.random() < 0.5)
-    }, 1000)
+    setOpenModal(true)
+    setCatchLoading(true)
+
+    const timer = () =>
+      setTimeout(() => {
+        setCatchSuccess(Math.random() < 0.5)
+
+        setCatchLoading(false)
+      }, 700)
 
     const timerId = timer()
 
@@ -60,10 +70,24 @@ function PokemonDetail(props) {
               }
             </div>
 
-            <button class="btn btn-primary mt-5 px-5" onClick={() => catchPokemon()}>
+            <button class="btn btn-primary mt-5 px-5"
+              onClick={() => catchPokemon()}
+            >
               CATCH
             </button>
-          </div>
+
+            {
+              openModal &&
+              <PokemonModal
+                openModal={openModal}
+                catchLoading={catchLoading}
+                detail={detail}
+                catchSuccess={catchSuccess}
+                catchPokemon={catchPokemon}
+                setOpenModal={setOpenModal}
+              /> 
+            }
+        </div>
       }
     </div>
   )
