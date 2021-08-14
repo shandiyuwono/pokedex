@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
-import { withRouter } from 'react-router-dom'
 import PokemonCard from './components/PokemonCard';
 import PokedexLogo from '../assets/pokedex_logo.png'
 import '../App.scss';
 
-function PokemonList(props) {
-  const {
-    history
-  } = props
-
+function PokemonList() {
   const [ data, setData ] = useState([])
   const [ loading, setLoading ] = useState(false)
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon'
@@ -33,14 +28,6 @@ function PokemonList(props) {
       .finally(() => {
         setLoading(false)
       })
-  }
-
-  const goToDetail = (name) => {
-    history.push(`/detail/${name}`, {
-      state: {
-        name
-      }
-    })
   }
 
   return (
@@ -68,4 +55,4 @@ function PokemonList(props) {
   )
 }
 
-export default withRouter(PokemonList);
+export default PokemonList;

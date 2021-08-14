@@ -13,7 +13,8 @@ function MyPokemonList(props) {
   }
 
   return (
-    <div>
+    <div className="pokemon-list-container">
+      <h2 className="my-4">My Pokemon List</h2>
       {
         myPokemonList ? 
           myPokemonList.map((val, index) => (

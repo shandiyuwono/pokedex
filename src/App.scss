@@ -1,3 +1,7 @@
+html {
+ font-size: 14px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,14 +10,6 @@ body {
 #pokedex-logo {
   max-width: 200px;
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .pokemon-list-container {
   width: 100vw;
   height: 100vh;
@@ -23,22 +19,23 @@ body {
   background: url('/assets/pokedex_background.png');
   background-repeat: repeat-y;
   background-size: cover;
+  overflow-x: hidden;
 }
 
 .pokemon-container {
-  height: 80vh;
+  height: 90vh;
   overflow: auto;
 }
 
 .poke-card {
-  width: 99vw;
+  width: 90vw;
   background-color: white;
   border-radius: 5px;
   display: flex;
   align-items: center;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
-  img {
+  .sprite {
     width: 100px;
     height: 100px;
   }
@@ -125,6 +122,21 @@ body {
 
     .fairy {
       background-color: rgba(240, 182, 188, 1)
+    }
+  }
+
+  button {
+    background: red;
+    color: white;
+    border-radius: 5px;
+    // outline: none;
+    border: none;
+    // border-radius: 50%;
+    padding: 5px 10px;
+    img {
+      width: 15px;
+      margin-left: 5px;
+      color: white;
     }
   }
 }
