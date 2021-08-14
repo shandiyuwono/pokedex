@@ -22,12 +22,24 @@ function PokemonDetail(props) {
       })
   }, [])
 
+  const catchPokemon = () => {
+    const timer = () => setTimeout(() => {
+      console.log('RANDOM', Math.random() < 0.5)
+    }, 1000)
+
+    const timerId = timer()
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }
+
   return (
     <div>
       {
         loading ?
           <div>Loading ...</div> : 
-          <div>
+          <div class="text-center">
             <h1>
               { detail.name[0].toUpperCase() + detail.name.slice(1) }
             </h1>
@@ -48,7 +60,7 @@ function PokemonDetail(props) {
               }
             </div>
 
-            <button class="btn btn-primary mt-5">
+            <button class="btn btn-primary mt-5 px-5" onClick={() => catchPokemon()}>
               CATCH
             </button>
           </div>
