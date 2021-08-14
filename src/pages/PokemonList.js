@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import PokemonCard from './components/PokemonCard';
+import PokedexLogo from '../assets/pokedex_logo.png'
 import '../App.scss';
 
 function PokemonList(props) {
@@ -43,8 +44,13 @@ function PokemonList(props) {
   }
 
   return (
-    <div>
-      <h1>Pokemon Codex</h1>
+    <div className="pokemon-list-container">
+      <img
+        id="pokedex-logo"
+        src={PokedexLogo}  
+        alt="pokedex logo"
+        className="my-4" 
+      />
 
       { loading ? 
         <h3>Loading ...</h3> :

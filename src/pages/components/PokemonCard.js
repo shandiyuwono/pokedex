@@ -19,21 +19,23 @@ function PokemonCard(props) {
   return (
     <div className={ `poke-card ${data.types[0].type.name} mb-2`}>
       <img src={data.sprites.front_default} alt="pokemon front" />
-      <div className="w-60">
-        <div>
-          <h2>
-            { data.name[0].toUpperCase() + data.name.slice(1) }
-          </h2>
-          { 
-            data.nickname &&
-            <h4> { data.nickname } </h4>
-          }
+      <div className="w-60 card-body">
+        <div className="d-flex justify-content-between">
+          <div>
+            <h2>
+              { data.name[0].toUpperCase() + data.name.slice(1) }
+            </h2>
+            { 
+              data.nickname &&
+              <h4> { data.nickname } </h4>
+            }
+          </div>
           <p>
             #{ data.id }
           </p>
         </div>
         
-        <div>
+        <div className="tags">
           {
             data.types.map((type, index) => (
               <p key={ index } className={ `${type.type.name}` }>
