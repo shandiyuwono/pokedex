@@ -1,4 +1,3 @@
-import { div } from 'prelude-ls'
 import { useState } from 'react'
 import PokemonCard from './components/PokemonCard'
 import ListContainer from 'styles/ListContainer'
@@ -31,7 +30,6 @@ function MyPokemonList(props) {
           </ListContainer> :
           <h4>You have not caught any Pokémons.</h4>
       }
-      
     </div>
   )
 }

@@ -1,7 +1,6 @@
-import PokemonDetail from './pages/PokemonDetail';
-import PokemonList from './pages/PokemonList'
-import MyPokemonList from './pages/MyPokemonList'
-import MobileNav from './pages/components/NavBar';
+
+import { lazy, Suspense} from 'react'
+
 import Background from 'assets/background.jpg'
 import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
@@ -10,6 +9,10 @@ import {
   Switch,
   Route
 } from "react-router-dom"
+const PokemonList =  lazy(() => import('./pages/PokemonList'))
+const MyPokemonList = lazy(() => import('./pages/MyPokemonList'))
+const PokemonDetail = lazy(() => import('./pages/PokemonDetail'))
+const NavBar = lazy(() => import('./pages/components/NavBar'));
 
 const Container = styled.div`
   width: 100%;
@@ -57,17 +60,25 @@ function App() {
           <Container>
             <Switch>
               <Route exact path="/">
-                <PokemonList />
+                <Suspense fallback="<div>loading...</div>">
+                  <PokemonList />
+                </Suspense>
               </Route>
               <Route path="/detail/:name">
-                <PokemonDetail />
+                <Suspense fallback="<div>loading...</div>">
+                  <PokemonDetail />
+                </Suspense>
               </Route>
               <Route path="/my-pokemon-list">
-                <MyPokemonList />
+                <Suspense fallback="<div>loading...</div>">
+                  <MyPokemonList />
+                </Suspense>
               </Route>
             </Switch>
 
-            <MobileNav />
+            <Suspense fallback="<div>loading...</div>">
+              <NavBar />
+            </Suspense>
           </Container>
         </Router>
     </div>

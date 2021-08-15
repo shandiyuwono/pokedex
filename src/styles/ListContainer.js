@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 const ListContainer = styled.div`
-  height: 90vh;
+  height: 85vh;
   width: 100%;
   overflow: auto;
   display: grid;

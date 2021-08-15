@@ -17,7 +17,7 @@ const Remove = styled.button`
     background-color: #7A7A7A;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 400px) {
     padding: 6px 8px;
     img {
       max-width: 15px;
