@@ -1,13 +1,13 @@
 
 import { lazy, Suspense} from 'react'
-
 import Background from 'assets/background.jpg'
 import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom"
 const PokemonList =  lazy(() => import('./pages/PokemonList'))
 const MyPokemonList = lazy(() => import('./pages/MyPokemonList'))
@@ -60,16 +60,19 @@ function App() {
           <Container>
             <Switch>
               <Route exact path="/">
+                <Redirect to="/pokedex" />
+              </Route>
+              <Route path="/pokedex">
                 <Suspense fallback="<div>loading...</div>">
                   <PokemonList />
                 </Suspense>
               </Route>
-              <Route path="/detail/:name">
+              <Route path="/pokedex/detail/:name">
                 <Suspense fallback="<div>loading...</div>">
                   <PokemonDetail />
                 </Suspense>
               </Route>
-              <Route path="/my-pokemon-list">
+              <Route path="/pokedex/my-pokemon-list">
                 <Suspense fallback="<div>loading...</div>">
                   <MyPokemonList />
                 </Suspense>
