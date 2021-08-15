@@ -4,10 +4,9 @@ import Background from 'assets/background.jpg'
 import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from "react-router-dom"
 const PokemonList =  lazy(() => import('./pages/PokemonList'))
 const MyPokemonList = lazy(() => import('./pages/MyPokemonList'))
@@ -56,30 +55,27 @@ function App() {
   return (
     <div>
       <Global styles={GlobalStyle} />
-        <Router>
+        <Router basename="/pokedex">
           <Container>
             <Switch>
               <Route exact path="/">
-                <Redirect to="/pokedex" />
-              </Route>
-              <Route exact path="/pokedex">
-                <Suspense fallback="<div>loading...</div>">
+                <Suspense fallback="">
                   <PokemonList />
                 </Suspense>
               </Route>
-              <Route path="/pokedex/detail/:name">
-                <Suspense fallback="<div>loading...</div>">
+              <Route path="/detail/:name">
+                <Suspense fallback="">
                   <PokemonDetail />
                 </Suspense>
               </Route>
-              <Route path="/pokedex/my-pokemon-list">
-                <Suspense fallback="<div>loading...</div>">
+              <Route path="/my-pokemon-list">
+                <Suspense fallback="">
                   <MyPokemonList />
                 </Suspense>
               </Route>
             </Switch>
 
-            <Suspense fallback="<div>loading...</div>">
+            <Suspense fallback="">
               <NavBar />
             </Suspense>
           </Container>
