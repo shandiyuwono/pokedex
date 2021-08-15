@@ -1,34 +1,58 @@
-import { useState, useEffect } from 'react';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import PokemonCard from './components/PokemonCard';
 import PokedexLogo from '../assets/pokedex_logo.png'
-import { Row, Col } from 'react-bootstrap';
+import PokeballLoading from '../assets/pokeball_loading.gif'
 import '../App.scss';
 
+const Loading = styled.img`
+  width: 150px;
+  height: 150px;
+`
+
 function PokemonList() {
+  const pokemonContainer = useRef();
   const [ data, setData ] = useState([])
   const [ loading, setLoading ] = useState(false)
+  const [nextUrl, setNextUrl ] = useState('')
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon'
   
   useEffect(() => {
-    setLoading(true)
-
-    axios.get(apiUrl)
-      .then((res) => {
-        console.log(res)
-        getDetail(res.data.results)
-      })
+    getList(apiUrl)
   }, [])
 
-  const getDetail = (data) => {
-    Promise.all(data.map(val => axios.get(val.url)))
+  const getList = (url) => {
+    setLoading(true)
+
+    axios.get(url)
       .then((res) => {
-        const data = res.map((val) => val.data)
-        setData(data)
+        setNextUrl(res.data.next)
+        getDetail(res.data.results)
+      })
+  }
+
+  const getDetail = (results) => {
+    Promise.all(results.map(val => axios.get(val.url)))
+      .then((res) => {
+        const details = res.map((val) => val.data)
+
+        setData(data.concat(details))
       })
       .finally(() => {
         setLoading(false)
       })
+  }
+
+  const onScroll = () => {
+    if (pokemonContainer.current) {
+      const { scrollTop, scrollHeight, clientHeight } = pokemonContainer.current;
+      if (scrollTop + clientHeight === scrollHeight) {
+        getList(nextUrl)
+      }
+    }
   }
 
   return (
@@ -40,18 +64,22 @@ function PokemonList() {
         className="my-4" 
       />
 
-      { loading ? 
-        <h3>Loading ...</h3> :
-        <div className="pokemon-container row">
-          {
-            data.map((val, index) => {
-              return (
-                <PokemonCard  q data={val} key={index}/>
-              )
-            })
-          }
-        </div>
-      }
+      <div className="pokemon-container row" onScroll={() => onScroll()} ref={pokemonContainer}>
+        {
+          data.map((val, index) => {
+            return (
+              <PokemonCard  data={val} key={index}/>
+            )
+          })
+        }
+
+        {
+          loading &&
+          <div className="col-12 d-flex justify-content-center">
+            <Loading src={PokeballLoading} alt="pokeball-loading" />
+          </div>
+        }
+      </div>
     </div>
   )
 }

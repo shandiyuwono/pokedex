@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
-import PokeballLoading from '../../assets/pokeball_loading.webp'
+import CatchLoading from '../../assets/catch_loading.webp'
 
 function PokemonModal(props) {
   const {
@@ -45,7 +45,7 @@ function PokemonModal(props) {
     <Modal show={openModal} centered>
       {
         catchLoading ? 
-        <img className="pokeball-loading" src={PokeballLoading} alt="pokeball loading"/> :
+        <img className="pokeball-loading" src={CatchLoading} alt="pokeball loading"/> :
         <div>
           <Modal.Body className="text-center">
             
