@@ -63,7 +63,7 @@ function PokemonCard(props) {
   } = props
 
   const goToDetail = (name) => {
-    history.push(`/detail/${name}`, {
+    history.push(`pokedex/detail/${name}`, {
       state: {
         name
       }
