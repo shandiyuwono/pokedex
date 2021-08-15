@@ -4,12 +4,25 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import PokemonModal from './components/PokemonModal'
 import Types from 'pages/components/Types'
+
+const DetailContainer = styled.div`
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+
+  img {
+    max-width: 150px;
+  }
+`
+
 const MovesContainer = styled.div`
   color: white;
+  background-color: rgb(32, 163, 158, 0.9);
 
   h4 {
     text-align: center;
-    background-color: #20A39E;
+    background-color: #146663;
     padding: 10px;
     margin: 0;
   }
@@ -19,7 +32,6 @@ const MovesContainer = styled.div`
     overflow: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 2px solid #20A39E;
     border-top: none;
   
     & > div {
@@ -35,17 +47,6 @@ const MovesContainer = styled.div`
   }
 `
 
-const DetailContainer = styled.div`
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  background-color: #EBEBEB;
-
-  img {
-    max-width: 150px;
-  }
-`
-
 const CatchButton = styled.button`
   margin-top: 2rem;
   width: 80%;
@@ -53,6 +54,10 @@ const CatchButton = styled.button`
   padding: 10px;
   background-color: lightyellow;
   border-radius: 10px;
+
+  &:hover {
+    background-color: #FFFFAD;
+  }
 `
 
 function PokemonDetail(props) {
@@ -95,7 +100,7 @@ function PokemonDetail(props) {
   }
 
   return (
-    <div>
+    <div className="">
       {
         loading ?
           <div>Loading ...</div> : 

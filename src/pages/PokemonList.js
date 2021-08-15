@@ -55,7 +55,7 @@ function PokemonList() {
 
   return (
     <div>
-      <h1 className="fw-bold py-4 text-center">
+      <h1 className="text-white fw-bold py-4 text-center">
         POKÉDEX
       </h1>
 

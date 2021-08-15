@@ -15,11 +15,12 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   margin: auto;
-  background-color: rgb(255,255,255, 0.9);
+  background-color: transparent;
   box-shadow: 12px 0 15px -4px rgba(0, 0, 0, 0, 0.8), -12px 0 8px -4px rgba(0, 0, 0, 0, 0.8);
 
   @media (min-width: 992px) {
     width: 60%;
+    background-color: rgb(255,255,255, 0.2);
   }
 `
 

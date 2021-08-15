@@ -14,6 +14,11 @@ const footerContainer = css`
   .btn-warning {
     background-color: lightyellow;
     border: 2px solid black;
+
+    &:hover {
+      background-color: #FFFFAD;
+      border: 2px solid black;
+    }
   }
 `
 

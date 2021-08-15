@@ -17,7 +17,7 @@ function MyPokemonList(props) {
 
   return (
     <div >
-      <h1 className="fw-bold text-center py-4">
+      <h1 className="text-white fw-bold text-center py-4">
         MY POKÉMON LIST
       </h1>
       {
