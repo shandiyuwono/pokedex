@@ -2,13 +2,14 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { withRouter } from 'react-router-dom'
-import { Card } from 'styles/PokemonListStyles'
+import { Card, Tags } from 'styles/PokemonListStyles'
+import Types from 'pages/components/Types'
 
 const Remove = styled.button`
   position: absolute;
   background: red;
   color: white;
-  right: 10px;
+  right: 0;
   bottom: 0;
   border-radius: 5px;
   border: none;
@@ -55,23 +56,15 @@ function PokemonCard(props) {
             </p>
           </div>
           
-          <div className="tags">
-            {
-              data.types.map((type, index) => (
-                <p key={ index } className={ `${type.type.name} me-3` }>
-                  { type.type.name[0].toUpperCase() + type.type.name.slice(1) }
-                </p>
-              ))
-            }
-          </div>
+          <Types data={data.types} />
         </div>
 
-        {/* {
+        {
             data.nickname &&
-            <Remove onClick={() => removePokemon(data.nickname)}>
+            <Remove onClick={(e) => removePokemon(e, data.nickname)}>
               Remove
             </Remove>
-          } */}
+          }
       </div>
     </ Card>
   )

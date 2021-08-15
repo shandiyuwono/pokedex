@@ -17,12 +17,12 @@ const style = {
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   padding: 10px;
-  background-color: #2D7BE8;
+  background-color: #20A39E;
   color: white;
   &.active {
     color: white;
     box-shadow: inset 0px 0px 2px #0E3E81;
-    background-color: #478BEB;
+    background-color: #25BBB6;
   }
 `
 

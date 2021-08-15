@@ -17,6 +17,10 @@ const GlobalStyle = css`
     @media (max-width: 991px) {
       font-size: 14px;
     }
+
+    @media (max-width: 320px) {
+      font-size: 12px;
+    }
   }
 
   body {

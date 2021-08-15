@@ -6,7 +6,9 @@ import { Container, ListContainer } from 'styles/PokemonListStyles'
 function MyPokemonList(props) {
   const [ myPokemonList, setMyPokemonList ] = useState(JSON.parse(localStorage.getItem('myPokemonList')))
 
-  const removePokemon = (nickname) => {
+  const removePokemon = (e, nickname) => {
+    e.stopPropagation()
+
     const filter = myPokemonList.filter(val => val.nickname !== nickname)
 
     setMyPokemonList(filter)

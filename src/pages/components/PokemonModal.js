@@ -1,6 +1,31 @@
 import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import CatchLoading from '../../assets/catch_loading.webp'
+import { css } from '@emotion/css'
+import styled from '@emotion/styled'
+
+const footerContainer = css`
+  justify-content: center !important;
+
+  button {
+    width: 40%;
+  }
+
+  .btn-warning {
+    background-color: lightyellow;
+    border: 2px solid black;
+  }
+`
+
+const Loader = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  img {
+    max-width: 100px;
+  }
+`
 
 function PokemonModal(props) {
   const {
@@ -14,7 +39,8 @@ function PokemonModal(props) {
 
   const [ nickname, setNickname ] = useState('')
   const [ error, setError ] = useState(false)
-  const [ response, setResponse ] = useState('')
+
+  const pokemonName = detail.name[0].toUpperCase() + detail.name.slice(1)
 
   const addPokemon = () => {
     const pokemonList = JSON.parse(localStorage.getItem('myPokemonList')) || []
@@ -26,13 +52,11 @@ function PokemonModal(props) {
       }
 
       pokemonList.push(newPokemon)
-      setError(false)
-      setResponse(`${nickname} has been added to your Pokémon List!`)
+      setOpenModal(false)
     }
 
     else {
       setError(true)
-      setResponse('Pokémon nickname has already been taken, please enter a new one.')
       setNickname('')
     }
 
@@ -43,13 +67,14 @@ function PokemonModal(props) {
     <Modal show={openModal} centered>
       {
         catchLoading ? 
-        <img className="pokeball-loading" src={CatchLoading} alt="pokeball loading"/> :
+        <Loader>
+          <img className="pokeball-loading" src={CatchLoading} alt="pokeball loading"/>
+        </Loader> :
         <div>
           <Modal.Body className="text-center">
-            
             <h2 className="mb-4">
               {
-                catchSuccess ? 'You\'ve successfully caught the Pokémon!' : 'Woops! The Pokémon Escaped!'
+                catchSuccess ? `You've successfully caught ${pokemonName}!` : `Woops! ${pokemonName} Escaped!`
               }
             </h2>
 
@@ -70,23 +95,23 @@ function PokemonModal(props) {
               }
 
               { 
-                response &&
+                error &&
                 <p className={ `mt-2 ${error ? 'text-danger' : 'text-success'}`}>
-                  { response }
+                  Pokémon nickname has already been taken, <br/> please enter a new one.
                 </p>
               }
             </div>
           </Modal.Body>
-          <Modal.Footer>
-            <button className="btn btn-secondary" onClick={() => setOpenModal(false)}>
+          <Modal.Footer className={ footerContainer }>
+            <button className="btn btn-secondary p-2" onClick={() => setOpenModal(false)}>
               Take me back
             </button>
             { 
               catchSuccess ?
-              <button className="btn btn-success" disabled={!nickname} onClick={() => addPokemon() }>
-                Save Pokemon
+              <button className="btn btn-success p-2" disabled={!nickname} onClick={() => addPokemon() }>
+                Save Pokémon
               </button> :
-              <button className="btn btn-warning" onClick={() => catchPokemon()}>
+              <button className="btn btn-warning p-2" onClick={() => catchPokemon()}>
                 Try again
               </button>
             }
