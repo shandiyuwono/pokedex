@@ -4,6 +4,12 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import PokemonModal from './components/PokemonModal'
 import Types from 'pages/components/Types'
+import PokeballLoading from '../assets/pokeball_loading.gif'
+
+const Loading = styled.img`
+  width: 150px;
+  height: 150px;
+`
 
 const DetailContainer = styled.div`
   padding: 20px;
@@ -103,7 +109,9 @@ function PokemonDetail(props) {
     <div className="">
       {
         loading ?
-          <div>Loading ...</div> : 
+          <div className="d-flex justify-content-center">
+            <Loading src={PokeballLoading} alt="pokeball-loading" />
+          </div> : 
           <div>
             <DetailContainer>
               <div>
@@ -158,7 +166,7 @@ function PokemonDetail(props) {
               catchSuccess={catchSuccess}
               catchPokemon={catchPokemon}
               setOpenModal={setOpenModal}
-            /> 
+            />
         </div>
       }
     </div>
