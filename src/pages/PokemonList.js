@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import PokemonCard from './components/PokemonCard';
 import PokedexLogo from '../assets/pokedex_logo.png'
+import { Row, Col } from 'react-bootstrap';
 import '../App.scss';
 
 function PokemonList() {
@@ -41,11 +42,11 @@ function PokemonList() {
 
       { loading ? 
         <h3>Loading ...</h3> :
-        <div className="pokemon-container">
+        <div className="pokemon-container row">
           {
             data.map((val, index) => {
               return (
-                <PokemonCard data={val} key={index}/>
+                <PokemonCard  q data={val} key={index}/>
               )
             })
           }

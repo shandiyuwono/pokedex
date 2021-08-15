@@ -1,13 +1,12 @@
-import './App.scss';
 import PokemonDetail from './pages/PokemonDetail';
 import PokemonList from './pages/PokemonList'
 import MyPokemonList from './pages/MyPokemonList'
+import MobileNav from './pages/components/MobileNav';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom"
-
 
 function App() {
   return (
@@ -23,6 +22,8 @@ function App() {
           <MyPokemonList />
         </Route>
       </Switch>
+
+      <MobileNav />
     </Router>
   );
 }

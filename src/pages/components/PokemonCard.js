@@ -17,8 +17,13 @@ function PokemonCard(props) {
   }
 
   return (
-    <div className={ `poke-card ${data.types[0].type.name} mb-4`}>
-      <img className="sprite" src={data.sprites.front_default} alt="pokemon front" />
+    <div
+      className={ `poke-card col-lg-4 col-md-12 ${data.types[0].type.name} mb-4`}
+      onClick={() => goToDetail(data.name)}
+    >
+      <div className="sprite-container">
+        <img className="sprite" src={data.sprites.front_default} alt="pokemon front" />
+      </div>
       <div className="w-100">
         <div className="py-2 px-3">
           <div className="d-flex justify-content-between">
@@ -54,12 +59,12 @@ function PokemonCard(props) {
               Remove
             </button>
           }
-          <button onClick={() => goToDetail(data.name)}>
+          {/* <button onClick={() => goToDetail(data.name)}>
             <span>
               See Details
             </span>
             <img src={ArrowRight} alt="detail" />
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

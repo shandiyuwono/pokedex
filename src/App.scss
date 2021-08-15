@@ -23,7 +23,7 @@ body {
 }
 
 .pokemon-container {
-  height: 90vh;
+  height: 80%;
   overflow: auto;
 }
 
@@ -34,11 +34,6 @@ body {
   display: flex;
   align-items: center;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
-  .sprite {
-    width: 100px;
-    height: 100px;
-  }
 
   .tags {
     display: flex;
@@ -163,5 +158,18 @@ body {
 .pokeball-loading {
   max-width: 100px;
 }
+
+.sprite-container {
+  background-color: rgb(193, 195, 195, 0.5);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  height: 100%;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 
 

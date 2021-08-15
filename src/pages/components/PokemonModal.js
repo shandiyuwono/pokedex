@@ -14,6 +14,7 @@ function PokemonModal(props) {
 
   const [ nickname, setNickname ] = useState('')
   const [ error, setError ] = useState(false)
+  const [ response, setResponse ] = useState('')
 
   const addPokemon = () => {
     const pokemonList = JSON.parse(localStorage.getItem('myPokemonList')) || []
@@ -25,10 +26,13 @@ function PokemonModal(props) {
       }
 
       pokemonList.push(newPokemon)
+      setError(false)
+      setResponse(`${nickname} has been added to your Pokémon List!`)
     }
 
     else {
       setError(true)
+      setResponse('Pokémon nickname has already been taken, please enter a new one.')
       setNickname('')
     }
 
@@ -47,7 +51,7 @@ function PokemonModal(props) {
             
             <h2 className="mb-4">
               {
-                catchSuccess ? 'You\'ve successfully caught the Pokemon!' : 'Woops! The Pokemon Escaped!'
+                catchSuccess ? 'You\'ve successfully caught the Pokémon!' : 'Woops! The Pokémon Escaped!'
               }
             </h2>
 
@@ -68,9 +72,9 @@ function PokemonModal(props) {
               }
 
               { 
-                error &&
-                <p>
-                  Pokemon nickname has already been taken, please enter a new one.
+                response &&
+                <p className={ `mt-2 ${error ? 'text-danger' : 'text-success'}`}>
+                  { response }
                 </p>
               }
             </div>
