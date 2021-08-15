@@ -1,6 +1,7 @@
 import { div } from 'prelude-ls'
 import { useState } from 'react'
 import PokemonCard from './components/PokemonCard'
+import { Container, ListContainer } from 'styles/PokemonListStyles'
 
 function MyPokemonList(props) {
   const [ myPokemonList, setMyPokemonList ] = useState(JSON.parse(localStorage.getItem('myPokemonList')))
@@ -13,17 +14,22 @@ function MyPokemonList(props) {
   }
 
   return (
-    <div className="pokemon-list-container">
+    <Container>
       <h2 className="my-4">My Pokemon List</h2>
       {
-        myPokemonList ? 
-          myPokemonList.map((val, index) => (
-            <PokemonCard data={val} removePokemon={removePokemon} key={index} />
-          )) :
+        myPokemonList ?
+        <ListContainer>
+          {
+            myPokemonList.map((val, index) => (
+              <PokemonCard data={val} removePokemon={removePokemon} key={index} />
+            ))
+          }
+        </ListContainer>
+          :
         <div>You have no pokemons</div>
       }
       
-    </div>
+    </Container>
   )
 }
 

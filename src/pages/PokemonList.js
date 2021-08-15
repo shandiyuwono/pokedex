@@ -1,16 +1,19 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import PokemonCard from './components/PokemonCard';
 import PokedexLogo from '../assets/pokedex_logo.png'
 import PokeballLoading from '../assets/pokeball_loading.gif'
-import '../App.scss';
+import { Container, ListContainer } from 'styles/PokemonListStyles'
 
 const Loading = styled.img`
   width: 150px;
   height: 150px;
+`
+
+const Logo = styled.img`
+  max-width: 200px;
 `
 
 function PokemonList() {
@@ -56,21 +59,18 @@ function PokemonList() {
   }
 
   return (
-    <div className="pokemon-list-container">
-      <img
-        id="pokedex-logo"
+    <Container>
+      <Logo
         src={PokedexLogo}  
         alt="pokedex logo"
         className="my-4" 
       />
 
-      <div className="pokemon-container row" onScroll={() => onScroll()} ref={pokemonContainer}>
+      <ListContainer className="pokemon-container" onScroll={() => onScroll()} ref={pokemonContainer}>
         {
-          data.map((val, index) => {
-            return (
-              <PokemonCard  data={val} key={index}/>
-            )
-          })
+          data.map((val, index) => (
+            <PokemonCard  data={val} key={index}/>
+          ))
         }
 
         {
@@ -79,8 +79,8 @@ function PokemonList() {
             <Loading src={PokeballLoading} alt="pokeball-loading" />
           </div>
         }
-      </div>
-    </div>
+      </ListContainer>
+    </Container>
   )
 }
 

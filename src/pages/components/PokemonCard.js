@@ -1,5 +1,19 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import { withRouter } from 'react-router-dom'
-import ArrowRight from '../../assets/right_arrow.png'
+import { Card } from 'styles/PokemonListStyles'
+
+const Remove = styled.button`
+  position: absolute;
+  background: red;
+  color: white;
+  right: 10px;
+  bottom: 0;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+`
 
 function PokemonCard(props) {
   const {
@@ -17,8 +31,8 @@ function PokemonCard(props) {
   }
 
   return (
-    <div
-      className={ `poke-card col-lg-4 col-md-12 ${data.types[0].type.name} mb-4`}
+    <Card
+      className={ `${data.types[0].type.name} mb-4`}
       onClick={() => goToDetail(data.name)}
     >
       <div className="sprite-container">
@@ -27,14 +41,14 @@ function PokemonCard(props) {
       <div className="w-100">
         <div className="py-2 px-3">
           <div className="d-flex justify-content-between">
-            <div>
+            <div className="d-flex">
               <h2>
                 { data.name[0].toUpperCase() + data.name.slice(1) }
               </h2>
-              { 
+              {/* { 
                 data.nickname &&
                 <h4> { data.nickname } </h4>
-              }
+              } */}
             </div>
             <p>
               #{ data.id }
@@ -52,22 +66,14 @@ function PokemonCard(props) {
           </div>
         </div>
 
-        <div className="d-flex justify-content-end">
-          {
+        {/* {
             data.nickname &&
-            <button onClick={() => removePokemon(data.nickname)}>
+            <Remove onClick={() => removePokemon(data.nickname)}>
               Remove
-            </button>
-          }
-          {/* <button onClick={() => goToDetail(data.name)}>
-            <span>
-              See Details
-            </span>
-            <img src={ArrowRight} alt="detail" />
-          </button> */}
-        </div>
+            </Remove>
+          } */}
       </div>
-    </div>
+    </ Card>
   )
 }
 

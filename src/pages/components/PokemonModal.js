@@ -36,8 +36,6 @@ function PokemonModal(props) {
       setNickname('')
     }
 
-    console.log('POKEMON LIST', pokemonList)
-
     localStorage.setItem('myPokemonList', JSON.stringify(pokemonList))
   }
 
