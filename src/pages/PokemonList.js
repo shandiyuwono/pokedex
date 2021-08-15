@@ -3,17 +3,12 @@ import styled from '@emotion/styled'
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import PokemonCard from './components/PokemonCard';
-import PokedexLogo from '../assets/pokedex_logo.png'
 import PokeballLoading from '../assets/pokeball_loading.gif'
-import { Container, ListContainer } from 'styles/PokemonListStyles'
+import ListContainer from 'styles/ListContainer'
 
 const Loading = styled.img`
   width: 150px;
   height: 150px;
-`
-
-const Logo = styled.img`
-  max-width: 200px;
 `
 
 function PokemonList() {
@@ -59,12 +54,10 @@ function PokemonList() {
   }
 
   return (
-    <Container>
-      <Logo
-        src={PokedexLogo}  
-        alt="pokedex logo"
-        className="my-4" 
-      />
+    <div>
+      <h1 className="fw-bold py-4 text-center">
+        POKÉDEX
+      </h1>
 
       <ListContainer className="pokemon-container" onScroll={() => onScroll()} ref={pokemonContainer}>
         {
@@ -80,7 +73,7 @@ function PokemonList() {
           </div>
         }
       </ListContainer>
-    </Container>
+    </div>
   )
 }
 
