@@ -62,7 +62,7 @@ function App() {
               <Route exact path="/">
                 <Redirect to="/pokedex" />
               </Route>
-              <Route path="/pokedex">
+              <Route exact path="/pokedex">
                 <Suspense fallback="<div>loading...</div>">
                   <PokemonList />
                 </Suspense>
