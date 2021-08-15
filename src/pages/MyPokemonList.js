@@ -28,7 +28,7 @@ function MyPokemonList(props) {
               ))
             }
           </ListContainer> :
-          <h4>You have not caught any Pokémons.</h4>
+          <h4 class="fw-bold text-center text-white">You have not caught any Pokémons.</h4>
       }
     </div>
   )
