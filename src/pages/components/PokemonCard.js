@@ -1,16 +1,28 @@
 import styled from '@emotion/styled'
 import { withRouter } from 'react-router-dom'
-import Types from 'pages/components/Types'
+import Types from '../components/Types'
+import DeleteIcon from 'assets/delete_icon.png'
 
 const Remove = styled.button`
   position: absolute;
-  background: red;
+  background: #525252;
   color: white;
   right: 0;
   bottom: 0;
-  border-radius: 5px;
+  border-top-left-radius: 18px;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 10px;
+
+  &:hover {
+    background-color: #7A7A7A;
+  }
+
+  @media (max-width: 320px) {
+    padding: 6px 8px;
+    img {
+      max-width: 15px;
+    }
+  }
 `
 
 const Card = styled.div`
@@ -26,6 +38,7 @@ const Card = styled.div`
     background-color: rgb(193, 195, 195, 0.5);
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
+    padding: 4px;
   
     img {
       width: 100px;
@@ -67,10 +80,10 @@ function PokemonCard(props) {
           <img className="sprite" src={data.sprites.front_default} alt="pokemon front" />
         </div>
         <div className="w-100">
-          <div className="py-2 px-3">
+          <div className="px-3">
             <div className="d-flex justify-content-between">
-              <div className="d-flex align-items-center">
-                <h3 className="me-3">
+              <div className="mb-2">
+                <h3 className="me-3 m-0">
                   { data.name[0].toUpperCase() + data.name.slice(1) }
                 </h3>
                 { 
@@ -89,7 +102,7 @@ function PokemonCard(props) {
           {
               data.nickname &&
               <Remove onClick={(e) => removePokemon(e, data.nickname)}>
-                Remove
+                <img src={DeleteIcon} alt="delete-pokemon" />
               </Remove>
             }
         </div>

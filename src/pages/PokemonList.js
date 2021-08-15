@@ -59,7 +59,7 @@ function PokemonList() {
         POKÉDEX
       </h1>
 
-      <ListContainer className="pokemon-container" onScroll={() => onScroll()} ref={pokemonContainer}>
+      <ListContainer onScroll={() => onScroll()} ref={pokemonContainer}>
         {
           data.map((val, index) => (
             <PokemonCard  data={val} key={index}/>

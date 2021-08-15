@@ -1,7 +1,7 @@
 import PokemonDetail from './pages/PokemonDetail';
 import PokemonList from './pages/PokemonList'
 import MyPokemonList from './pages/MyPokemonList'
-import MobileNav from './pages/components/MobileNav';
+import MobileNav from './pages/components/NavBar';
 import Background from 'assets/background.jpg'
 import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
