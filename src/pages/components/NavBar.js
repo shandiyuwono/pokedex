@@ -27,8 +27,8 @@ const StyledLink = styled(NavLink)`
 function NavBar() {
   return (
     <Nav>
-      <StyledLink exact={true} to="/" activeClassName="active">Pokédex</StyledLink>
-      <StyledLink to="/my-pokemon-list" activeClassName="active">My Pokémon List</StyledLink>
+      <StyledLink exact={true} to="/pokedex" activeClassName="active">Pokédex</StyledLink>
+      <StyledLink to="/pokedex/my-pokemon-list" activeClassName="active">My Pokémon List</StyledLink>
     </Nav>  
   )
 }
